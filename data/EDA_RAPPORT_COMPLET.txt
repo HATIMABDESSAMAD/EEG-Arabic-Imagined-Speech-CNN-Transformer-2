@@ -1,0 +1,85 @@
+====================================================================================================
+                    RAPPORT D'ANALYSE EXPLORATOIRE - DATASET ArEEG_Words
+====================================================================================================
+
+1. INFORMATIONS GÉNÉRALES
+----------------------------------------------------------------------------------------------------
+   • Dataset: ArEEG_Words - Enregistrements EEG pour mots arabes
+   • Nombre de classes (mots): 16
+   • Nombre total de fichiers: 359
+   • Équipement: EPOCX EEG Headset
+   • Canaux EEG: 14 canaux
+
+2. LISTE DES MOTS (CLASSES)
+----------------------------------------------------------------------------------------------------
+    1. اختر                      -  23 fichiers
+    2. اسفل                      -  22 fichiers
+    3. اعلى                      -  23 fichiers
+    4. انذار                     -  22 fichiers
+    5. ايقاف تشغيل               -  23 fichiers
+    6. تشغيل                     -  22 fichiers
+    7. جوع                       -  21 fichiers
+    8. حذف                       -  21 fichiers
+    9. حمام                      -  23 fichiers
+   10. دواء                      -  24 fichiers
+   11. عطش                       -  23 fichiers
+   12. لا                        -  22 fichiers
+   13. مسافة                     -  20 fichiers
+   14. نعم                       -  22 fichiers
+   15. يسار                      -  25 fichiers
+   16. يمين                      -  23 fichiers
+
+3. CANAUX EEG
+----------------------------------------------------------------------------------------------------
+   Canaux disponibles (14 canaux):
+    1. EEG.AF3
+    2. EEG.F7
+    3. EEG.F3
+    4. EEG.FC5
+    5. EEG.T7
+    6. EEG.P7
+    7. EEG.O1
+    8. EEG.O2
+    9. EEG.P8
+   10. EEG.T8
+   11. EEG.FC6
+   12. EEG.F4
+   13. EEG.F8
+   14. EEG.AF4
+
+4. DONNÉES COLLECTÉES
+----------------------------------------------------------------------------------------------------
+   • Signaux EEG (14 canaux)
+   • Qualité du contact (Contact Quality) pour chaque canal
+   • Qualité de l'équipement (Equipment Quality)
+   • Données de mouvement (accéléromètre, magnétomètre, quaternions)
+   • Timestamps et métadonnées
+
+5. FICHIERS GÉNÉRÉS PAR L'ANALYSE
+----------------------------------------------------------------------------------------------------
+   Graphiques:
+   • eda_distribution_fichiers.png - Distribution des fichiers par classe
+   • eda_analyse_signaux_eeg.png - Analyse détaillée des signaux EEG
+   • eda_qualite_signal.png - Analyse de la qualité du signal
+   • eda_analyse_par_mot.png - Comparaison des mots
+   • eda_donnees_mouvement.png - Analyse des données de mouvement
+
+   Données CSV:
+   • eda_statistiques_eeg.csv - Statistiques des canaux EEG
+   • eda_qualite_signal.csv - Métriques de qualité du signal
+   • eda_features_par_mot.csv - Features extraites par fichier
+   • eda_statistiques_par_mot.csv - Statistiques agrégées par mot
+   • eda_statistiques_mouvement.csv - Statistiques des capteurs de mouvement
+
+6. RECOMMANDATIONS POUR L'ANALYSE ULTÉRIEURE
+----------------------------------------------------------------------------------------------------
+   • Prétraitement: Filtrer les signaux EEG (bande de fréquence appropriée)
+   • Feature Engineering: Extraire des features temporelles et fréquentielles
+   • Segmentation: Diviser les enregistrements en epochs cohérents
+   • Classification: Tester différents algorithmes (CNN, LSTM, SVM, etc.)
+   • Validation: Utiliser une validation croisée appropriée
+   • Qualité: Filtrer ou pondérer par la qualité du signal
+
+====================================================================================================
+                                   FIN DU RAPPORT
+====================================================================================================

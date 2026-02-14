@@ -1,0 +1,66 @@
+# =============================================================================
+# Arabic EEG Imagined Speech Classification - .gitignore
+# =============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model outputs (redundant ones)
+outputs/
+outputs_balanced/
+outputs_robust/
+outputs_test/
+*.h5
+*.ckpt
+*.pb
+saved_model/
+
+# Keep outputs_advanced/ for pre-trained model
+
+# Large data files (optional - uncomment if data is large)
+# data/
+# *.csv
+
+# Temporary files
+*.npy
+*.tmp
+tmp/
+temp/
+cache/
+
+# Keep normalization stats
+!outputs_advanced/normalization_stats.npz
+
+# Logs
+*.log
+logs/
+tensorboard/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

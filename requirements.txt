@@ -1,0 +1,34 @@
+# =============================================================================
+# Arabic EEG Imagined Speech Classification
+# CNN + Transformer & Traditional ML Pipeline
+# =============================================================================
+
+# Core Deep Learning
+# Using TensorFlow 2.16+ (Keras 3) - compatible with Python 3.13
+tensorflow>=2.16.0
+
+# Data Processing
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+joblib>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Streamlit Deployment
+streamlit>=1.28.0
+plotly>=5.18.0
+
+# Optional: GPU Acceleration
+# tensorflow-gpu>=2.14.0  # For older TF versions
+# tensorrt>=8.6.0         # NVIDIA optimization
+
+# Development (optional)
+# pytest>=7.0.0           # Testing
+# black>=23.0.0           # Code formatting
+# flake8>=6.0.0           # Linting

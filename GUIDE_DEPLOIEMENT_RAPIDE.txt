@@ -1,0 +1,112 @@
+╔══════════════════════════════════════════════════════════════════╗
+║   🚀 GUIDE DE DÉPLOIEMENT STREAMLIT CLOUD - ÉTAPES RAPIDES      ║
+╚══════════════════════════════════════════════════════════════════╝
+
+✅ ÉTAPE 1: CODE POUSSÉ SUR GITHUB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Votre code est maintenant sur GitHub:
+  https://github.com/HATIMABDESSAMAD/EEG-Arabic-Imagined-Speech-CNN-Transformer
+
+✓ Fichiers essentiels inclus:
+  - app.py (application Streamlit)
+  - requirements.txt (dépendances)
+  - .streamlit/config.toml (configuration)
+  - outputs_advanced/ (modèle et stats)
+
+
+📋 ÉTAPE 2: CONNECTEZ-VOUS À STREAMLIT CLOUD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Ouvrez votre navigateur et allez sur:
+   👉 https://share.streamlit.io
+
+2. Cliquez sur "Sign in" en haut à droite
+
+3. Connectez-vous avec votre compte GitHub
+   (utilisez le compte: HATIMABDESSAMAD)
+
+
+🎯 ÉTAPE 3: CRÉER UNE NOUVELLE APP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Cliquez sur "New app" (bouton bleu en haut à droite)
+
+2. Remplissez le formulaire:
+   
+   Repository: HATIMABDESSAMAD/EEG-Arabic-Imagined-Speech-CNN-Transformer
+   Branch: main
+   Main file path: app.py
+   App URL (optionnel): arabic-eeg-classifier (ou votre choix)
+
+3. Cliquez sur "Deploy!" (bouton bleu en bas)
+
+
+⏳ ÉTAPE 4: ATTENDRE LE DÉPLOIEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Le déploiement prend environ 2-5 minutes:
+
+1. Installation des dépendances... ⏳
+2. Chargement du modèle... ⏳
+3. Démarrage de l'application... ⏳
+4. Application prête! ✅
+
+
+🌐 ÉTAPE 5: ACCÉDER À VOTRE APPLICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Votre application sera accessible à une URL comme:
+
+   https://arabic-eeg-classifier.streamlit.app
+   (ou l'URL que vous avez choisie)
+
+✓ Partagez cette URL avec qui vous voulez!
+✓ Aucune installation requise pour les utilisateurs
+✓ Fonctionne sur desktop, tablette et mobile
+
+
+📢 ÉTAPE 6: PARTAGER VOTRE APPLICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Une fois déployée, vous pouvez:
+
+1. Copier le lien et l'envoyer par email/WhatsApp/etc.
+2. L'ajouter dans votre README GitHub
+3. Le partager sur les réseaux sociaux
+4. L'intégrer dans votre portfolio
+
+
+🔄 MISES À JOUR FUTURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Pour mettre à jour votre app:
+
+1. Faites vos modifications localement
+2. Testez avec: streamlit run app.py
+3. Commitez: git add . && git commit -m "Update..."
+4. Pushez: git push origin main
+5. L'app se redéploiera automatiquement! 🚀
+
+
+⚠️ NOTES IMPORTANTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Limite de RAM: 1 GB (suffisant pour ce projet)
+• Limite de stockage: Gardez seulement les fichiers essentiels
+• Sleep mode: L'app s'endort après 7 jours sans visite
+  (elle redémarre automatiquement quand quelqu'un la visite)
+
+
+📞 BESOIN D'AIDE?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Documentation: https://docs.streamlit.io/streamlit-cloud
+• Forum: https://discuss.streamlit.io
+• Status: https://status.streamlit.io
+
+
+═══════════════════════════════════════════════════════════════════
+
+          🎉 VOTRE APPLICATION EST PRÊTE À ÊTRE DÉPLOYÉE! 🎉
+
+═══════════════════════════════════════════════════════════════════
