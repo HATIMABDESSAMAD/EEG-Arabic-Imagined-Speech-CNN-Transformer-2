@@ -260,18 +260,8 @@ def extract_multiband_features(data: np.ndarray, fs: float = 128.0) -> np.ndarra
 
 @st.cache_resource
 def load_model():
-    """Load the trained model by rebuilding architecture and loading weights."""
-    # Check if weights file exists (Keras 3 compatible)
-    if os.path.exists(WEIGHTS_PATH):
-        try:
-            model = rebuild_model_architecture()
-            model.load_weights(WEIGHTS_PATH)
-            model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-            return model
-        except Exception as e:
-            st.warning(f"Weight loading failed: {e}")
-    
-    # Fallback: try loading original model (only works with Keras 2)
+    """Load the trained model - try original model first (Keras 2), then weights (Keras 3)."""
+    # First: try loading original model directly (works with Keras 2 / TF 2.15 in Docker)
     if os.path.exists(MODEL_PATH):
         custom_objects = {
             'EEGAugmenter': EEGAugmenter,
@@ -286,7 +276,17 @@ def load_model():
             model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
             return model
         except Exception as e:
-            st.error(f"Failed to load model: {e}")
+            st.warning(f"Direct model loading failed (expected on Keras 3): {e}")
+    
+    # Fallback: rebuild architecture and load weights (Keras 3 compatible)
+    if os.path.exists(WEIGHTS_PATH):
+        try:
+            model = rebuild_model_architecture()
+            model.load_weights(WEIGHTS_PATH)
+            model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+            return model
+        except Exception as e:
+            st.error(f"Weight loading failed: {e}")
             return None
     
     st.error("No model files found!")
