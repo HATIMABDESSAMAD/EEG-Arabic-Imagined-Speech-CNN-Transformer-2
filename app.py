@@ -659,7 +659,7 @@ def render_sidebar():
             'Arabic': ARABIC_CLASSES,
             'English': [ENGLISH_TRANSLATIONS[w] for w in ARABIC_CLASSES]
         })
-        st.dataframe(word_df, hide_index=True, use_container_width=True)  # noqa: deprecated but kept for compatibility
+        st.dataframe(word_df, hide_index=True, width='stretch')
 
 
 # ============================================================================
