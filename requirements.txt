@@ -4,8 +4,8 @@
 # =============================================================================
 
 # Core Deep Learning
-# Using TensorFlow 2.15 (Keras 2) - compatible with saved model format
-tensorflow-cpu==2.15.0
+# tensorflow-cpu 2.16+ supports Python 3.12 (Keras 3, uses weight fallback)
+tensorflow-cpu>=2.16.0,<2.20.0
 
 # Data Processing
 numpy>=1.24.0,<2.0.0
