@@ -217,6 +217,7 @@ FREQUENCY_BANDS = {
 
 MODEL_PATH = "outputs_advanced/best_model.keras"
 WEIGHTS_PATH = "outputs_advanced/model_weights.weights.h5"
+WEIGHTS_NPZ_PATH = "outputs_advanced/model_weights.npz"
 POS_EMB_PATH = "outputs_advanced/position_embedding.npy"
 NORM_STATS_PATH = "outputs_advanced/normalization_stats.npz"
 
@@ -258,6 +259,25 @@ def extract_multiband_features(data: np.ndarray, fs: float = 128.0) -> np.ndarra
     return multi_band
 
 
+def _load_weights_from_npz(model, npz_path):
+    """Load weights from npz file exported by export_weights.py."""
+    data = np.load(npz_path, allow_pickle=True)
+    loaded, skipped = 0, 0
+    for layer in model.layers:
+        layer_weights = []
+        i = 0
+        while f"{layer.name}_{i}" in data:
+            layer_weights.append(data[f"{layer.name}_{i}"])
+            i += 1
+        if layer_weights:
+            try:
+                layer.set_weights(layer_weights)
+                loaded += 1
+            except Exception:
+                skipped += 1
+    return loaded, skipped
+
+
 @st.cache_resource
 def load_model():
     """Load the trained model - try original model first (Keras 2), then weights (Keras 3)."""
@@ -278,7 +298,7 @@ def load_model():
         except Exception as e:
             st.warning(f"Direct model loading failed (expected on Keras 3): {e}")
     
-    # Fallback: rebuild architecture and load weights (Keras 3 compatible)
+    # Fallback 1: rebuild architecture and load .weights.h5
     if os.path.exists(WEIGHTS_PATH):
         try:
             model = rebuild_model_architecture()
@@ -286,7 +306,17 @@ def load_model():
             model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
             return model
         except Exception as e:
-            st.error(f"Weight loading failed: {e}")
+            st.warning(f"H5 weight loading failed: {e}")
+    
+    # Fallback 2: rebuild architecture and load from .npz (always available in git)
+    if os.path.exists(WEIGHTS_NPZ_PATH):
+        try:
+            model = rebuild_model_architecture()
+            loaded, skipped = _load_weights_from_npz(model, WEIGHTS_NPZ_PATH)
+            model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+            return model
+        except Exception as e:
+            st.error(f"NPZ weight loading failed: {e}")
             return None
     
     st.error("No model files found!")
@@ -366,9 +396,12 @@ def rebuild_model_architecture():
     x = layers.MaxPooling1D(pool_size=2, strides=2, name='max_pooling1d')(x)
     x = layers.MaxPooling1D(pool_size=2, strides=2, name='max_pooling1d_1')(x)
     
-    # Position embedding - add constant tensor (compatible with Keras 3)
-    pos_embedding_const = tf.constant(pos_emb, dtype=tf.float32)
-    x = x + pos_embedding_const
+    # Position embedding - use Lambda for Keras 2/3 compatibility
+    _pos_emb_val = pos_emb.copy()
+    x = layers.Lambda(
+        lambda inp: inp + tf.cast(tf.constant(_pos_emb_val), inp.dtype),
+        name='pos_embedding_add'
+    )(x)
     x = layers.Dropout(dropout * 0.5, name='dropout_3')(x)
     
     # Transformer blocks
