@@ -296,7 +296,7 @@ def load_model():
             model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
             return model
         except Exception as e:
-            st.warning(f"Direct model loading failed (expected on Keras 3): {e}")
+            print(f"Direct model loading failed (expected on Keras 3): {e}")
     
     # Fallback 1: rebuild architecture and load .weights.h5
     if os.path.exists(WEIGHTS_PATH):
@@ -306,7 +306,7 @@ def load_model():
             model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
             return model
         except Exception as e:
-            st.warning(f"H5 weight loading failed: {e}")
+            print(f"H5 weight loading failed: {e}")
     
     # Fallback 2: rebuild architecture and load from .npz (always available in git)
     if os.path.exists(WEIGHTS_NPZ_PATH):
