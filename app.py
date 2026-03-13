@@ -659,7 +659,7 @@ def render_sidebar():
             'Arabic': ARABIC_CLASSES,
             'English': [ENGLISH_TRANSLATIONS[w] for w in ARABIC_CLASSES]
         })
-        st.dataframe(word_df, hide_index=True, use_container_width=True)
+        st.dataframe(word_df, hide_index=True, use_container_width=True)  # noqa: deprecated but kept for compatibility
 
 
 # ============================================================================
@@ -778,16 +778,16 @@ def main():
                 
                 with viz_tab1:
                     fig_bars = plot_prediction_bars(avg_prediction)
-                    st.plotly_chart(fig_bars, use_container_width=True)
+                    st.plotly_chart(fig_bars, width='stretch')
                 
                 with viz_tab2:
                     fig_heatmap = plot_epoch_predictions(predictions)
-                    st.plotly_chart(fig_heatmap, use_container_width=True)
+                    st.plotly_chart(fig_heatmap, width='stretch')
                 
                 with viz_tab3:
                     epoch_preds = [ARABIC_CLASSES[np.argmax(p)] for p in predictions]
                     fig_pie = plot_consensus_pie(epoch_preds)
-                    st.plotly_chart(fig_pie, use_container_width=True)
+                    st.plotly_chart(fig_pie, width='stretch')
                     
                     # Consensus table
                     counter = Counter(epoch_preds)
@@ -799,11 +799,11 @@ def main():
                         }
                         for w, c in counter.most_common()
                     ])
-                    st.dataframe(consensus_df, hide_index=True, use_container_width=True)
+                    st.dataframe(consensus_df, hide_index=True, width='stretch')
                 
                 with viz_tab4:
                     fig_eeg = plot_eeg_signals(raw_data)
-                    st.plotly_chart(fig_eeg, use_container_width=True)
+                    st.plotly_chart(fig_eeg, width='stretch')
                 
             except Exception as e:
                 st.error(f"❌ Error processing file: {str(e)}")
@@ -944,7 +944,7 @@ def main():
                             }
                             for r in results
                         ])
-                        st.dataframe(results_df, hide_index=True, use_container_width=True)
+                        st.dataframe(results_df, hide_index=True, width='stretch')
                         
                         # Confusion visualization
                         st.markdown("---")
@@ -973,7 +973,7 @@ def main():
                             yaxis=dict(range=[0, 110])
                         )
                         
-                        st.plotly_chart(fig, use_container_width=True)
+                        st.plotly_chart(fig, width='stretch')
                 
                 st.markdown("---")
                 st.markdown("### 🔍 Analyze Single Sample")
@@ -1038,7 +1038,7 @@ def main():
                                 
                                 # Show probabilities
                                 fig = plot_prediction_bars(avg_prediction)
-                                st.plotly_chart(fig, use_container_width=True)
+                                st.plotly_chart(fig, width='stretch')
                             else:
                                 st.error("Could not process the sample file.")
                         except Exception as e:
